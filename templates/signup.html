@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up - Neural Career Matrix</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Arial', sans-serif; 
+            background: #000; 
+            color: white; 
+            min-height: 100vh; 
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* COSMIC BACKGROUND */
+        body::before {
+            content: ''; 
+            position: fixed; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%;
+            background: 
+                radial-gradient(30% 30% at 20% 20%, rgba(0,255,204,0.4) 0%, transparent 50%),
+                radial-gradient(30% 30% at 80% 80%, rgba(255,107,203,0.4) 0%, transparent 50%),
+                radial-gradient(30% 30% at 50% 10%, rgba(0,212,255,0.3) 0%, transparent 50%);
+            animation: cosmicFlow 15s ease-in-out infinite;
+            z-index: 1;
+        }
+        
+        @keyframes cosmicFlow {
+            0%, 100% { opacity: 0.6; transform: scale(1) rotate(0deg); }
+            33% { opacity: 0.9; transform: scale(1.1) rotate(120deg); }
+            66% { opacity: 0.7; transform: scale(0.95) rotate(240deg); }
+        }
+        
+        /* FLOATING PARTICLES */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, #00ffcc, transparent);
+            animation: float 6s infinite linear;
+        }
+        .particle:nth-child(1) { width: 8px; height: 8px; top: 20%; left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { width: 12px; height: 12px; top: 70%; right: 15%; background: radial-gradient(circle, #ff6bcb, transparent); animation-delay: 1s; }
+        .particle:nth-child(3) { width: 6px; height: 6px; bottom: 30%; left: 20%; animation-delay: 2s; }
+        .particle:nth-child(4) { width: 10px; height: 10px; top: 50%; right: 25%; background: radial-gradient(circle, #00d4ff, transparent); animation-delay: 3s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) scale(1); opacity: 0.8; }
+            50% { transform: translateY(-20px) scale(1.3); opacity: 1; }
+        }
+        
+        .container { 
+            position: relative; 
+            z-index: 10; 
+            background: rgba(255,255,255,0.08); 
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(0,255,204,0.3);
+            padding: 60px 45px; 
+            border-radius: 30px;
+            max-width: 420px; 
+            width: 95%; 
+            text-align: center;
+            margin: 20px auto;
+            box-shadow: 
+                0 25px 50px rgba(0,0,0,0.7),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+            animation: cardRise 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        @keyframes cardRise {
+            0% { transform: translateY(80px) scale(0.8); opacity: 0; }
+            100% { transform: translateY(0) scale(1); opacity: 1; }
+        }
+        
+        /* NEON GLOW BORDER */
+        .container::before {
+            content: ''; 
+            position: absolute; 
+            inset: -4px;
+            background: conic-gradient(#00ffcc, #ff6bcb, #00d4ff, #00ffcc);
+            border-radius: 30px; 
+            z-index: -1;
+            animation: neonSpin 8s linear infinite;
+            filter: blur(12px);
+        }
+        @keyframes neonSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        h1 { 
+            background: linear-gradient(120deg, #00ffcc 0%, #ff6bcb 50%, #00d4ff 100%);
+            background-size: 300% 300%;
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            font-size: 2.8rem; 
+            margin-bottom: 15px;
+            animation: gradientShift 4s ease infinite, glowPulse 2s ease-in-out infinite alternate;
+            letter-spacing: 2px;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        @keyframes glowPulse {
+            0% { filter: drop-shadow(0 0 20px rgba(0,255,204,0.8)); }
+            100% { filter: drop-shadow(0 0 40px rgba(255,107,203,0.8)); }
+        }
+        
+        .subtitle {
+            color: rgba(255,255,255,0.85);
+            font-size: 1.15rem;
+            margin-bottom: 35px;
+            letter-spacing: 1px;
+        }
+        
+        .main-credentials { 
+            background: linear-gradient(135deg, rgba(0,255,204,0.25), rgba(255,107,203,0.25)); 
+            border: 2px solid rgba(0,255,204,0.5);
+            padding: 25px; 
+            border-radius: 20px; 
+            margin: 30px 0; 
+            text-align: center;
+            animation: credsGlow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes credsGlow {
+            0% { box-shadow: 0 0 25px rgba(0,255,204,0.4); }
+            100% { box-shadow: 0 0 45px rgba(0,255,204,0.8), 0 0 80px rgba(255,107,203,0.3); }
+        }
+        
+        .main-credentials strong { 
+            color: #00ffcc; 
+            font-size: 1.2rem;
+            text-shadow: 0 0 15px rgba(0,255,204,0.9);
+        }
+        
+        input { 
+            width: 100%; 
+            padding: 22px 25px; 
+            margin: 15px 0; 
+            border: 2px solid rgba(255,255,255,0.2); 
+            border-radius: 18px; 
+            background: rgba(255,255,255,0.12); 
+            color: white; 
+            font-size: 17px;
+            font-weight: 500;
+            backdrop-filter: blur(15px);
+            transition: all 0.4s ease;
+        }
+        
+        input:focus {
+            outline: none; 
+            border-color: #00ffcc;
+            background: rgba(255,255,255,0.22);
+            box-shadow: 0 0 30px rgba(0,255,204,0.5);
+            transform: translateY(-3px);
+        }
+        
+        input::placeholder { 
+            color: rgba(255,255,255,0.65); 
+            font-weight: 500;
+        }
+        
+        button { 
+            width: 100%; 
+            background: linear-gradient(45deg, #00ffcc 0%, #ff6bcb 50%, #00d4ff 100%);
+            background-size: 300% 300%;
+            color: #000; 
+            padding: 25px; 
+            border: none; 
+            border-radius: 20px; 
+            font-size: 20px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            margin-top: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            animation: btnGradient 4s ease infinite;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        @keyframes btnGradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        button:hover { 
+            transform: translateY(-8px) scale(1.02); 
+            box-shadow: 
+                0 25px 50px rgba(0,255,204,0.6),
+                0 0 60px rgba(255,107,203,0.5);
+        }
+        
+        .back-link { 
+            color: #00ffcc; 
+            text-decoration: none; 
+            font-weight: bold; 
+            margin-top: 30px; 
+            display: inline-block;
+            font-size: 16px;
+            transition: all 0.4s;
+            text-shadow: 0 0 10px rgba(0,255,204,0.6);
+        }
+        
+        .back-link:hover { 
+            color: #ff6bcb; 
+            transform: scale(1.05);
+            text-shadow: 0 0 25px rgba(255,107,203,0.9);
+        }
+        
+        @media (max-width: 480px) {
+            .container { padding: 45px 30px; margin: 15px; }
+            h1 { font-size: 2.2rem; }
+            button { padding: 22px; font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- FLOATING PARTICLES -->
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    
+    <div class="container">
+        <h1>📝 Neural Onboarding</h1>
+        <p class="subtitle">Join the Quantum Career Revolution →</p>
+        
+        <div class="main-credentials">
+            <div><strong>🎯 PRIMARY ACCESS:</strong></div>
+            <strong>👤 Username:</strong> virtual career<br>
+            <strong>🔑 Password:</strong> counselor
+        </div>
+        
+        <form method="POST">
+            <input name="username" placeholder="Enter Neural ID" required>
+            <input name="password" type="password" placeholder="Enter Quantum Key" required>
+            <button type="submit">🚀 ACTIVATE NEURAL PATHWAY</button>
+        </form>
+        
+        <a href="/" class="back-link">← Career Portal Gateway</a>
+    </div>
+</body>
+</html>

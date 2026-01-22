@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Counsel - Neural Career Matrix</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: linear-gradient(135deg, #0a0a1e, #1a1a3e); color: white; padding: 50px 20px; }
+        .container { max-width: 900px; margin: 0 auto; background: rgba(255,255,255,0.1); padding: 40px; border-radius: 25px; backdrop-filter: blur(20px); }
+        h1 { background: linear-gradient(45deg, #00ffcc, #ff6bcb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-align: center; font-size: 2.8rem; margin-bottom: 30px; }
+        .profile-card { background: rgba(0,255,204,0.2); padding: 25px; border-radius: 15px; margin: 20px 0; border-left: 5px solid #00ffcc; }
+        .btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
+        .btn { background: linear-gradient(45deg, #00ffcc, #ff6bcb); color: #000; padding: 15px 30px; text-decoration: none; border-radius: 12px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧠 Career Counseling Session</h1>
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div style="background: rgba(0,255,0,0.2); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                    {{ messages[0] }}
+                </div>
+            {% endif %}
+        {% endwith %}
+        
+        <div class="profile-card">
+            <h3>📊 Your AWS Profile</h3>
+            {% if session.aws_data %}
+                <p><strong>Name:</strong> {{ session.aws_data.name }}</p>
+                <p><strong>Certification:</strong> {{ session.aws_data.aws_cert }}</p>
+                <p><strong>Experience:</strong> {{ session.aws_data.experience }}</p>
+            {% else %}
+                <p>No AWS profile found. <a href="/aws_register">Complete AWS Registration</a></p>
+            {% endif %}
+        </div>
+        
+        <div class="btn-group">
+            <a href="/career_path" class="btn">📈 Career Paths</a>
+            <a href="/job_market" class="btn">📊 Job Market</a>
+            <a href="/recommendations" class="btn">🎯 Recommendations</a>
+        </div>
+    </div>
+</body>
+</html>
+

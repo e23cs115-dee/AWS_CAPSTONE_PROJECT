@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Market - Neural Career Matrix</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: linear-gradient(135deg, #0a0a1e, #1a1a3e); color: white; padding: 50px 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { background: linear-gradient(45deg, #00ffcc, #ff6bcb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-align: center; font-size: 3rem; margin-bottom: 40px; }
+        .trends { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .trend-card { background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; backdrop-filter: blur(15px); text-align: center; }
+        .demand { font-size: 3rem; color: #00ffcc; font-weight: bold; }
+        .btn { background: linear-gradient(45deg, #00ffcc, #ff6bcb); color: #000; padding: 12px 25px; text-decoration: none; border-radius: 10px; font-weight: bold; display: inline-block; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 2026 Job Market Trends</h1>
+        <div class="trends">
+            {% for trend in trends %}
+            <div class="trend-card">
+                <div class="demand">{{ trend.demand }}</div>
+                <h3>{{ trend.skill }}</h3>
+                <p><strong>Jobs Available:</strong> {{ trend.jobs }}</p>
+                <p><strong>Hot Location:</strong> {{ trend.location }}</p>
+                <a href="#" class="btn">Apply Now →</a>
+            </div>
+            {% endfor %}
+        </div>
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="/counsel" class="btn" style="font-size: 18px; padding: 15px 40px;">← Back to Counsel</a>
+        </div>
+    </div>
+</body>
+</html>
+
