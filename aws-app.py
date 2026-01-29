@@ -21,7 +21,7 @@ admin_users_table = dynamodb.Table('AdminUsers')
 career_profiles_table = dynamodb.Table('CareerProfiles')  # For AWS data
 
 # SNS Topic ARN (Replace with your actual SNS Topic ARN)
-SNS_TOPIC_ARN = arn:aws:sns:us-east-1:575108951484:VirtualCounselor:41c38caa-6590-4f36-898b-f2585f379bbd 
+SNS_TOPIC_ARN =arn:aws:sns:us-east-1:575108951484:VirtualCounselor 
 
 # Configuration for File Uploads
 UPLOAD_FOLDER = 'static/uploads'
