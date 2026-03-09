@@ -8,7 +8,7 @@ from botocore.exceptions import ClientError
 
 app = Flask(__name__)
 app.secret_key = 'virtual-career-2026-super-secret'
-
+``
 # AWS Configuration 
 REGION = 'us-east-1' 
 

@@ -1,4 +1,4 @@
-from flask import Flask, render_template_string, request, redirect, url_for, session, flash
+from flask import Flask, render_template_string, request, redirect,url_for, session, flash
 
 app = Flask(__name__)
 app.secret_key = 'virtual-career-2026-super-secret'
@@ -262,4 +262,3 @@ def logout():
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
-
