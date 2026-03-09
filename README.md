@@ -1,4 +1,4 @@
-                                                The Virtual Career Counselor: Harnessing Generative AI and AWS for Personalized Pathways
+The Virtual Career Counselor: Harnessing Generative AI and AWS for Personalized Pathways
 1.🏠 Home / Index Page
 
 Dark AI-themed neon gradient background
